@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.mumu.learn.grpc;
+
+//插件生成包所在的位置，与package效果一样
+option java_package = "com.mumu.learn.grpc";
+//生成服务名字，默认为service名加上Grpc组合的字符串
+option java_outer_classname = "MuMuServer";
+option java_multiple_files = true;
+
+service AddService{
+  rpc add(AddRequest) returns (AddResponse){}
+}
+
+message AddRequest{
+  string requestId = 1;
+  int32 a = 2;
+  int32 b = 3;
+  repeated int32 c = 4;
+  map<int32, int32> m = 5;
+  Digits digits = 6;
+}
+
+message Digits{
+  int32 d = 1;
+  int32 e = 2;
+}
+
+message AddResponse{
+  string requestId = 1;
+  int32 res = 2;
+}
